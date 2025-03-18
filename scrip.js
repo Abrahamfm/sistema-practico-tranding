@@ -11,8 +11,9 @@ function calcular() {
     let historialCapital = [capitalInicial]; // Para visualizar la evolución del capital
 
     for (let i = 0; i < numeroOperaciones; i++) {
-        let riesgoOperacion = capitalFinal * riesgoPorcentaje; // Ajuste dinámico según capital actual
-        let gananciaOperacion = riesgoOperacion * riesgoRecompensa;
+        let volatilidad = (Math.random() * 0.4) + 0.8; // Factor de volatilidad (entre 0.8 y 1.2)
+        let riesgoOperacion = capitalFinal * riesgoPorcentaje * volatilidad; // Ajuste dinámico con volatilidad
+        let gananciaOperacion = riesgoOperacion * riesgoRecompensa * volatilidad;
         
         if (Math.random() < tasaExito) {
             capitalFinal += gananciaOperacion;
@@ -45,7 +46,7 @@ function calcular() {
 
     // Mostrar resultados en pantalla
     let resultado = `
-        <p>Probabilidad de ganar al menos una vez: ${ (probGanar * 100).toFixed(2) }%</p>
+        <p>Probabilidad de ganar al menos una vez: ${ (probGanar * 100).toFixed(6) }%</p>
         <p>Expectativa matemática: ${ expectativa.toFixed(2) }</p>
         <p>Capital final estimado: $${ capitalFinal.toFixed(2) }</p>
         <p>Último porcentaje de riesgo aplicado: ${(riesgoPorcentaje * 100).toFixed(3)}%</p>
