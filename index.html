@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Probabilidad en Trading</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h2>Calculadora de Probabilidad en Trading</h2>
+    <label>Tasa de Éxito (%): </label>
+    <input type="number" id="tasaExito" value="60" min="0" max="100" step="0.01"><br>
+
+    <label>Número de Operaciones: </label>
+    <input type="number" id="numeroOperaciones" value="10" min="1"><br>
+
+    <label>Ratio Riesgo/Recompensa: </label>
+    <input type="number" id="riesgoRecompensa" value="2" min="0" step="0.01"><br>
+
+    <label>Capital Inicial ($): </label>
+    <input type="number" id="capitalInicial" value="1000" min="1" step="0.01"><br>
+
+    <label>Riesgo por Operación (%): </label>
+    <input type="number" id="riesgoOperacion" value="2" min="0" step="0.01"><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+    <div class="formula">
+        <p>Fórmula de Expectativa:</p>
+        <p>E = (Tasa de Éxito × Riesgo/Recompensa) - [(1 - Tasa de Éxito) × 1]</p>
+        <p>Probabilidad de Ganar al menos una vez = 1 - (1 - Tasa de Éxito)<sup>Número de Operaciones</sup></p>
+    </div>
+
+    <script src="scrip.js"></script>
+</body>
+</html>
